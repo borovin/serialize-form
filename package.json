@@ -1,6 +1,6 @@
 {
   "name": "@basket/serialize-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "html form to json serializer",
   "main": "index.js",
   "scripts": {
