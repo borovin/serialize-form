@@ -1,28 +1,17 @@
 const serializeForm = require('../index');
 
-const flatForm = `<form id="flatForm">
-    <input type="text" name="a" value="1" />
-    <textarea name="b">2</textarea>
-    <input type="checkbox" name="c" checked />
-    <input type="checkbox" name="d" />
-    <input type="radio" name="e" value="3" />
-    <input type="radio" name="e" value="4" checked />
-    <input type="radio" name="e" value="5" />
-    <input type="radio" name="e" value="6" />
-    <input type="number" name="f" value="7.1" />
-</form>`;
-
-const complexForm = `<form id="complexForm">
-    <input type="text" name="a.text" value="1" />
-    <textarea name="a.area">2</textarea>
-    <input type="checkbox" name="c.one" checked />
-    <input type="checkbox" name="c.two" />
-    <input type="radio" name="e.radio" value="3" />
-    <input type="radio" name="e.radio" value="4" checked />
-    <input type="radio" name="e.radio" value="5" />
-    <input type="radio" name="e.radio" value="6" />
-    <input type="number" name="f[0]" value="7.1" />
-    <input type="number" name="f[1]" value="10" />
+const form = `<form id="form">
+    <input type="text" name="number" value="1.1" />
+    <input type="text" name="text.string" value="text" />
+    <input type="text" name="text.number" value="1.2" />
+    <textarea name="textarea.string">test</textarea>
+    <textarea name="textarea.number">1.3</textarea>
+    <input type="checkbox" name="checkboxOn" checked />
+    <input type="checkbox" name="checkboxOff" />
+    <input type="radio" name="radio[0]" value="1" />
+    <input type="radio" name="radio[0]" value="2" checked />
+    <input type="radio" name="radio[1]" value="3" />
+    <input type="radio" name="radio[1]" value="4" />
 </form>`;
 
 afterEach(() => {
@@ -30,22 +19,17 @@ afterEach(() => {
 });
 
 it('should serialize flat form', () => {
-    document.body.innerHTML = flatForm;
+    document.body.innerHTML = form;
 
-    const formData = serializeForm(document.getElementById('flatForm'));
-
-    expect(formData).toEqual({"a": "1", "b": "2", "c": true, "d": false, "e": "4", "f": 7.1});
-});
-
-it('should serialize flat form', () => {
-    document.body.innerHTML = complexForm;
-
-    const formData = serializeForm(document.getElementById('complexForm'));
+    const formData = serializeForm(document.getElementById('form'));
 
     expect(formData).toEqual({
-        "a": {"text": "1", "area": "2"},
-        "c": {"one": true, "two": false},
-        "e": {"radio": "4"},
-        "f": [7.1, 10]
+        "number": 1.1,
+        "text": {"string": "text", "number": 1.2},
+        "textarea": {"string": "test", "number": 1.3},
+        "checkboxOn": true,
+        "checkboxOff": false,
+        "radio": [2, false]
     });
 });
+
