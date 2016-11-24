@@ -15,17 +15,20 @@ function serializeForm(formElement) {
         }
 
         switch (inputElement.type) {
-            case 'radio':
+            case 'radio': {
                 const property = get(data, inputName);
                 if (typeof property === 'undefined' || property === false) {
                     set(data, inputName, inputElement.checked ? inputValue : false);
                 }
                 break;
-            case 'checkbox':
+            }
+            case 'checkbox': {
                 set(data, inputName, inputElement.checked);
                 break;
-            default:
+            }
+            default: {
                 set(data, inputName, inputValue);
+            }
         }
     });
 
