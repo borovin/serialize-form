@@ -1,5 +1,9 @@
 # serialize-form
 
+[![Build Status](https://travis-ci.org/borovin/serialize-form.svg?branch=master)](https://travis-ci.org/borovin/serialize-form)
+[![codecov](https://codecov.io/gh/borovin/serialize-form/branch/master/graph/badge.svg)](https://codecov.io/gh/borovin/serialize-form)
+[![bitHound Overall Score](https://www.bithound.io/github/borovin/serialize-form/badges/score.svg)](https://www.bithound.io/github/borovin/serialize-form)
+
 Simple function to serialize html form to plain JS object. Supports nested properties and arrays.
 Each input with `name` attribute will be added to serialized object. If value of this input passed `isFinite` function
 check it serializes as number. If checkbox or radio button is not checked its value will be false.
