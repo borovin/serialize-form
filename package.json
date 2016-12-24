@@ -11,7 +11,7 @@
   "author": "a@borovin.com",
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.2"
+    "lodash": "4.17.2"
   },
   "devDependencies": {
     "jest": "^17.0.3",
