@@ -3,7 +3,7 @@ cache:
   directories:
     - node_modules
 node_js:
-  - "6"
+  - "stable"
 sudo: false
 env:
   - TEST_TYPE=coverage CACHE_NAME=JOB1
